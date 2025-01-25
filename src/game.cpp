@@ -1,5 +1,4 @@
 #include "game.h"
-#include <iostream>
 #include <stdexcept>
 
 namespace reversi::game {
@@ -88,7 +87,6 @@ bool Game::move(Vector2 pos) {
     bool valid = false;
     for (Vector2 d : Vector2::DIRECTIONS) {
         uint8_t n = project(pos, d, current);
-        std::cout << d << (int)n << '\n';
 
         valid |= n > 0;
         for (int8_t i = 1; i <= n; i++) {
