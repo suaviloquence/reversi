@@ -1,34 +1,44 @@
 #include "src/game.h"
+#include "src/strategy.h"
 #include <iostream>
 
-using reversi::game::Vector2;
+using namespace reversi;
+using game::Vector2;
 
 int main(void) {
-    reversi::game::Game game;
-    Vector2 move;
+  game::Game game;
+  strategy::Points p;
+  strategy::Strategy *strategy = &p;
+  Vector2 move;
 
-    do {
-        std::cout << game << "\n\n";
+  do {
+    std::cout << game << "\n\n";
 
-        std::cout << (game.current == reversi::game::Turn::BLACK ? "black": "white") << " to move.\nPossible moves: ";
+    std::cout << (game.current == game::Turn::BLACK ? "black" : "white")
+              << " to move.\nPossible moves: ";
 
-        auto moves = game.possible_moves();
-        for (auto move : moves) {
-            std::cout << move << ", ";
-        }
+    auto moves = game.possible_moves();
+    for (auto move : moves) {
+      std::cout << move << ", ";
+    }
 
-        std::cout << std::endl;
+    std::cout << std::endl;
 
-        do {
-            unsigned int x, y;
-            std::cout << "x y > ";
-            std::cin >> x >> y;
-            move.x = x;
-            move.y = y;
-        } while (moves.find(move) == moves.end());
+    if (game.current == game::Turn::BLACK) {
+      do {
+        unsigned int x, y;
+        std::cout << "x y > ";
+        std::cin >> x >> y;
+        move.x = x;
+        move.y = y;
+      } while (moves.find(move) == moves.end());
+    } else {
+      move = strategy->move(&game);
+      std::cout << "White moves " << move << std::endl;
+    }
+  } while (!game.move(move));
 
-    } while (!game.move(move));
-
-    std::cout << "\n\nblack: " << game.black() << " | white: " << game.white() << "\n";
-    return 0;
+  std::cout << "\n\nblack: " << (int) game.black() << " | white: " <<  (int)game.white()
+            << "\n";
+  return 0;
 }
