@@ -14,5 +14,5 @@ jobs:
       - run: sudo apt install catch2 meson
       - uses: actions/checkout@v4
       - run: meson setup build -Dwerror=true && cd build
-      - run: meson build
+      - run: meson compile
       - run: ./test_reversi
