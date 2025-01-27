@@ -11,7 +11,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - run: apt install catch2 meson
+      - run: sudo apt update && sudo apt install catch2 meson
       - uses: actions/checkout@v4
       - run: meson setup build -Dwerror=true && cd build
   build:
