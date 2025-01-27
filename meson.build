@@ -1,4 +1,4 @@
-project('reversi', 'cpp')
+project('reversi', 'cpp', default_options: { 'warning_level': '4' })
 catch2defs = dependency('catch2', version: '>=3.8.0')
 catch2main = dependency('catch2-with-main', version: '>=3.8.0')
 
