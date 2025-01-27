@@ -8,19 +8,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - run: sudo apt install catch2 meson
       - uses: actions/checkout@v4
       - run: meson setup build -Dwerror=true && cd build
-  build:
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
       - run: meson build
-  unit-tests:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - run: ./test_reversi
