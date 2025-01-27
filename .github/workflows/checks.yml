@@ -13,8 +13,8 @@ jobs:
     steps:
       - run: apt install catch2 meson
       - uses: actions/checkout@v4
-      - run: meson setup build && cd build
-  build-with-warnings:
+      - run: meson setup build -Dwerror=true && cd build
+  build:
     runs-on: ubuntu-latest
     needs: setup
     steps:
