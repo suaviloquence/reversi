@@ -1,3 +1,8 @@
 project('reversi', 'cpp')
+catch2defs = dependency('catch2', version: '>=3.8.0')
+catch2main = dependency('catch2-with-main', version: '>=3.8.0')
+
 subdir('src')
-executable('reversi', sources)
+main = executable('reversi', sources + main, dependencies: [catch2defs])
+unit_tests = executable('test_reversi', sources, dependencies: [catch2main])
+test('unit tests', unit_tests)

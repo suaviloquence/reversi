@@ -1,1 +1,2 @@
-sources = files('reversi.cpp', 'game.cpp', 'strategy.cpp')
+sources = files('game.cpp', 'strategy.cpp')
+main = files('reversi.cpp')

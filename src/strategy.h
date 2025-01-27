@@ -1,18 +1,16 @@
 #pragma once
 #include "game.h"
+#include <cstdint>
 
 namespace reversi::strategy {
 using game::Vector2;
 
-class Strategy {
-private:
-  virtual long score(game::Game const *state, Vector2 pos) = 0;
-
-public:
+struct Strategy {
+  virtual int64_t score(game::Game const *state, Vector2 pos) = 0;
   virtual Vector2 move(game::Game const *state);
 };
 
-class Points : public Strategy {
-  long score(game::Game const *state, Vector2 pos) override;
+struct Points : public Strategy {
+  int64_t score(game::Game const *state, Vector2 pos) override;
 };
 } // namespace reversi::strategy
