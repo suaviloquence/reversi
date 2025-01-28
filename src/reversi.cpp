@@ -38,7 +38,7 @@ int main(void) {
     }
   } while (!game.move(move));
 
-  std::cout << "\n\nblack: " << (int) game.black() << " | white: " <<  (int)game.white()
-            << "\n";
+  std::cout << "\n\nblack: " << (int)game.black()
+            << " | white: " << (int)game.white() << "\n";
   return 0;
 }

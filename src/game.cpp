@@ -217,18 +217,18 @@ TEST_CASE("game state changes according to rules", "[game]") {
   }
 
   SECTION("game finishes") {
-      game.at({4, 4}) = Cell::EMPTY;
-      game.at({0, 0}) = Cell::BLACK;
-      game.at({0, 1}) = Cell::WHITE;
-      game.current = Turn::BLACK;
+    game.at({4, 4}) = Cell::EMPTY;
+    game.at({0, 0}) = Cell::BLACK;
+    game.at({0, 1}) = Cell::WHITE;
+    game.current = Turn::BLACK;
 
-      bool result = game.move({3, 2});
-      REQUIRE(!result);
-      REQUIRE(game.current == Turn::BLACK);
-      result = game.move({0, 2});
-      REQUIRE(result);
-      REQUIRE(game.black() == 6);
-      REQUIRE(game.white() == 0);
+    bool result = game.move({3, 2});
+    REQUIRE(!result);
+    REQUIRE(game.current == Turn::BLACK);
+    result = game.move({0, 2});
+    REQUIRE(result);
+    REQUIRE(game.black() == 6);
+    REQUIRE(game.white() == 0);
   }
 }
 
